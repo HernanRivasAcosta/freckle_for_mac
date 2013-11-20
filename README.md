@@ -1,4 +1,4 @@
-freckle_for_mac
+Freckle for Mac
 ===============
 
 Simple unintrusive mac app to create Freckle entries
