@@ -27,6 +27,10 @@
 		ACCA55781826FEF90098946F /* FreckleAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCA55771826FEF90098946F /* FreckleAPIManager.m */; };
 		ACCA557B1826FF210098946F /* FreckleUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCA557A1826FF210098946F /* FreckleUserData.m */; };
 		ACCA557E182703AB0098946F /* FreckleMenuletHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCA557D182703AB0098946F /* FreckleMenuletHandler.m */; };
+		ACE28A07183D6B8C008052A3 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE28A03183D6B8C008052A3 /* StatusHighlighted.png */; };
+		ACE28A08183D6B8C008052A3 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE28A04183D6B8C008052A3 /* StatusHighlighted@2x.png */; };
+		ACE28A09183D6B8C008052A3 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE28A05183D6B8C008052A3 /* Status.png */; };
+		ACE28A0A183D6B8C008052A3 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACE28A06183D6B8C008052A3 /* Status@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		ACCA557A1826FF210098946F /* FreckleUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreckleUserData.m; sourceTree = "<group>"; usesTabs = 1; };
 		ACCA557C182703AB0098946F /* FreckleMenuletHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreckleMenuletHandler.h; sourceTree = "<group>"; };
 		ACCA557D182703AB0098946F /* FreckleMenuletHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreckleMenuletHandler.m; sourceTree = "<group>"; usesTabs = 1; };
+		ACE28A03183D6B8C008052A3 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusHighlighted.png; sourceTree = "<group>"; };
+		ACE28A04183D6B8C008052A3 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StatusHighlighted@2x.png"; sourceTree = "<group>"; };
+		ACE28A05183D6B8C008052A3 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Status.png; sourceTree = "<group>"; };
+		ACE28A06183D6B8C008052A3 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Status@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +183,7 @@
 				ACCA55551826FE2E0098946F /* MainMenu.xib */,
 				ACCA55741826FE9F0098946F /* src */,
 				ACCA55751826FEA80098946F /* xibs */,
+				ACE28A02183D6B74008052A3 /* UI */,
 				ACCA55471826FE2E0098946F /* Supporting Files */,
 				ACCA55581826FE2E0098946F /* Images.xcassets */,
 			);
@@ -235,6 +244,17 @@
 				AC3FAA8A183988FC00E7CC1F /* utils */,
 			);
 			name = xibs;
+			sourceTree = "<group>";
+		};
+		ACE28A02183D6B74008052A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				ACE28A05183D6B8C008052A3 /* Status.png */,
+				ACE28A06183D6B8C008052A3 /* Status@2x.png */,
+				ACE28A03183D6B8C008052A3 /* StatusHighlighted.png */,
+				ACE28A04183D6B8C008052A3 /* StatusHighlighted@2x.png */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,8 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC64C9318301D9D0018D674 /* FreckleSubmitProjectWindowController.xib in Resources */,
+				ACE28A09183D6B8C008052A3 /* Status.png in Resources */,
+				ACE28A08183D6B8C008052A3 /* StatusHighlighted@2x.png in Resources */,
 				ACCA554B1826FE2E0098946F /* InfoPlist.strings in Resources */,
 				ACCA55591826FE2E0098946F /* Images.xcassets in Resources */,
+				ACE28A0A183D6B8C008052A3 /* Status@2x.png in Resources */,
+				ACE28A07183D6B8C008052A3 /* StatusHighlighted.png in Resources */,
 				ACC64C8E182EAB600018D674 /* FreckleLoginWindowController.xib in Resources */,
 				ACCA55571826FE2E0098946F /* MainMenu.xib in Resources */,
 			);

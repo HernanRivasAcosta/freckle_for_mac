@@ -45,11 +45,11 @@
 #pragma mark Menu Creation
 - (void)createMenuBarIcon
 {
-	_menuBarIcon = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-	[_menuBarIcon setTitle:@"F"];
+	_menuBarIcon = [[NSStatusBar systemStatusBar] statusItemWithLength:22];
+	[_menuBarIcon setImage:[NSImage imageNamed:@"Status"]];
+	[_menuBarIcon setAlternateImage:[NSImage imageNamed:@"StatusHighlighted"]];
 	[_menuBarIcon setEnabled:YES];
 	[_menuBarIcon setHighlightMode:YES];
-	[_menuBarIcon setToolTip:@"FreckleTimer"];
 	
 	// We will to call this everytime there is a change either in favorites or active projects.
 	// It is not necessary, but it would be nice to have some optimization here, we are not reusing anything.
@@ -275,11 +275,7 @@
 {
 	NSString *buttonName = menuItem.representedObject;
 	
-	if ([buttonName isEqualToString:@"quit"])
-	{
-		// Do nothing
-	}
-	else
+	if (buttonName != nil) // The Quit button has a no represented object
 	{
 		FreckleProjectData *project = [_projectManager getProjectByName:buttonName];
 		
