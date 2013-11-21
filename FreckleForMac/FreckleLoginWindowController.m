@@ -10,18 +10,15 @@
 
 @interface FreckleLoginWindowController()
 
-@property FreckleUserData *_userData;
-@property id<FreckleLoginWindowControllerDelegate> _delegate;
-@property CGFloat _initialSuffixX;
-@property BOOL _shouldQuitAppOnClose;
-
+@property FreckleUserData *userData;
+@property id<FreckleLoginWindowControllerDelegate> delegate;
+@property CGFloat initialSuffixX;
+@property BOOL shouldQuitAppOnClose;
 
 @end
 
 @implementation FreckleLoginWindowController
 
-// Private properties
-@synthesize _userData, _delegate, _initialSuffixX, _shouldQuitAppOnClose;
 // xib
 @synthesize _domainInput, _apiTokenInput, _domainSuffixField;
 
@@ -29,9 +26,12 @@
 {
 	self = [super initWithWindowNibName:@"FreckleLoginWindowController"];
 	
-	_userData = userData;
-    _delegate = delegate;
-	_shouldQuitAppOnClose = YES;
+	if (self != nil)
+	{
+		_userData = userData;
+		_delegate = delegate;
+		_shouldQuitAppOnClose = YES;
+	}
 	
 	return self;
 }

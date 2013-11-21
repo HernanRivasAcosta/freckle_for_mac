@@ -10,20 +10,20 @@
 
 @interface FreckleAPIManager()
 
-@property FreckleUserData *_userData;
+@property FreckleUserData *userData;
 
 @end
 
 @implementation FreckleAPIManager
 
-// Private variables
-@synthesize _userData;
-
 - (id)initWithUserData:(FreckleUserData *)userData
 {
 	self = [super init];
 	
-	_userData = userData;
+	if (self != nil)
+	{
+		_userData = userData;
+	}
 	
 	return self;
 }

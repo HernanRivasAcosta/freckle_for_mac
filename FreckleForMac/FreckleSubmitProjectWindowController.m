@@ -10,17 +10,15 @@
 
 @interface FreckleSubmitProjectWindowController ()
 
-@property FreckleProjectData *_project;
-@property FreckleAPIManager *_apiManager;
-@property id<FreckleSubmitProjectWindowControllerDelegate> _delegate;
-@property NSUInteger _lastValidMinutes;
+@property FreckleProjectData *project;
+@property FreckleAPIManager *apiManager;
+@property id<FreckleSubmitProjectWindowControllerDelegate> delegate;
+@property NSUInteger lastValidMinutes;
 
 @end
 
 @implementation FreckleSubmitProjectWindowController
 
-// Private variables
-@synthesize _project, _apiManager, _delegate, _lastValidMinutes;
 // xib
 @synthesize _timeField, _commentsField;
 
@@ -28,9 +26,12 @@
 {
 	self = [super initWithWindowNibName:@"FreckleSubmitProjectWindowController"];
 	
-	_project = project;
-	_apiManager = apiManager;
-	_delegate = delegate;
+	if (self != nil)
+	{
+		_project = project;
+		_apiManager = apiManager;
+		_delegate = delegate;
+	}
 	
 	return self;
 }

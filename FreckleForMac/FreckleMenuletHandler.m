@@ -10,34 +10,31 @@
 
 @interface FreckleMenuletHandler()
 
-@property FreckleUserData *_userData;
-@property FreckleAPIManager *_apiManager;
-@property FreckleProjectManager *_projectManager;
+@property FreckleUserData *userData;
+@property FreckleAPIManager *apiManager;
+@property FreckleProjectManager *projectManager;
 
-@property NSStatusItem *_menuBarIcon;
-@property NSMenu *_allProjectsMenu;
-@property FreckleSubmitProjectWindowController *_submitWindow;
+@property NSStatusItem *menuBarIcon;
+@property NSMenu *allProjectsMenu;
+@property FreckleSubmitProjectWindowController *submitWindow;
 
-@property FreckleProjectData *_currentProject;
+@property FreckleProjectData *currentProject;
 
 @end
 
 @implementation FreckleMenuletHandler
 
-// Received from parameters
-@synthesize _userData, _apiManager, _projectManager;
-// Private variables
-@synthesize _menuBarIcon, _allProjectsMenu, _submitWindow;
-@synthesize _currentProject;
-
 - (id)initWithUserData:(FreckleUserData *)userData apiManager:(FreckleAPIManager *)apiManager andProjectManager:(FreckleProjectManager *)projectManager
 {
 	self = [super init];
 	
-	_userData = userData;
-	_apiManager = apiManager;
-	_projectManager = projectManager;
-	[self createMenuBarIcon];
+	if (self != nil)
+	{
+		_userData = userData;
+		_apiManager = apiManager;
+		_projectManager = projectManager;
+		[self createMenuBarIcon];
+	}
 	
 	return self;
 }

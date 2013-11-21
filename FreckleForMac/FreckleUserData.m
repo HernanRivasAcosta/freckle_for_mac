@@ -10,15 +10,12 @@
 
 @interface FreckleUserData()
 
-@property NSString *_domain, *_token;
-@property NSMutableArray *_favoriteProjects;
+@property (nonatomic) NSString *domain, *token;
+@property (nonatomic) NSMutableArray *favoriteProjects;
 
 @end
 
 @implementation FreckleUserData
-
-// Private variables
-@synthesize _domain, _token, _favoriteProjects;
 
 // NSUserDefaults keys
 static NSString *const DOMAIN_KEY = @"freckleDomain";
@@ -29,7 +26,10 @@ static NSString *const FAVORITE_PROJECTS_KEY = @"favoriteProjects";
 {
 	self = [super init];
 	
-	[self loadFromDefaults];
+	if (self != nil)
+	{
+		[self loadFromDefaults];
+	}
 	
 	return self;
 }

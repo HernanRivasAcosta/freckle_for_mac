@@ -14,15 +14,13 @@
 
 @interface FreckleProjectData()
 
-@property NSUInteger _minutesBeforeThisSession;
-@property NSDate *_currentSessionStart;
+@property NSUInteger minutesBeforeThisSession;
+@property NSDate *currentSessionStart;
 
 @end
 
 @implementation FreckleProjectData
 
-// Private variables
-@synthesize _minutesBeforeThisSession, _currentSessionStart;
 // Public variables
 @synthesize name;
 // UserDefault keys
@@ -33,8 +31,11 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 {
 	self = [super init];
 	
-	name = aName;
-	[self loadFromUserDefaults];
+	if (self != nil)
+	{
+		name = aName;
+		[self loadFromUserDefaults];
+	}
 	
 	return self;
 }
@@ -156,31 +157,28 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 
 @interface FreckleProjectManager()
 
-@property FreckleUserData *_userData;
-@property FreckleAPIManager *_apiManager;
-@property NSArray *_projectNames, *_projects;
+@property FreckleUserData *userData;
+@property FreckleAPIManager *apiManager;
+@property NSArray *projectNames, *projects;
 
-@property SEL _onProjectsLoaded;
-@property id _onProjectsLoadedTarget;
+@property SEL onProjectsLoaded;
+@property id onProjectsLoadedTarget;
 
-@property FreckleLoginWindowController *_loginWindow;
+@property FreckleLoginWindowController *loginWindow;
 
 @end
 
 @implementation FreckleProjectManager
 
-// Private variables
-@synthesize _userData, _apiManager;
-@synthesize _projectNames, _projects;
-@synthesize _onProjectsLoaded, _onProjectsLoadedTarget;
-@synthesize _loginWindow;
-
 - (id)initWithUserData:(FreckleUserData *)userData andAPIManager:(FreckleAPIManager *)apiManager
 {
 	self = [super init];
 	
-	_userData = userData;
-	_apiManager = apiManager;
+	if (self != nil)
+	{
+		_userData = userData;
+		_apiManager = apiManager;
+	}
 	 
 	return self;
 }
