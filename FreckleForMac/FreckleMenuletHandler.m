@@ -82,9 +82,7 @@
 
 - (void)fillMenuWithHighlightedProjects:(NSMenu *)menu
 {
-	NSUInteger itemsAdded, i, l;
-	
-	itemsAdded = 0;
+	NSUInteger itemsAdded = 0;
 	
 	FreckleProjectData *project;
 	
@@ -92,11 +90,9 @@
 	NSMenuItem *menuItem;
 	
 	NSArray *activeProjects = [_projectManager getActiveProjects];
-	
-	l = activeProjects.count;
-	for (i = 0; i < l; i++)
+
+	for (project in activeProjects)
 	{
-		project = [activeProjects objectAtIndex:i];
 		
 		if (project.beingWorkedOn)
 		{
@@ -122,11 +118,8 @@
 		itemsAdded = 0;
 	}
 	
-	l = _userData.favoriteProjects.count;
-	for (i = 0; i < l; i++)
+	for (itemName in _userData.favoriteProjects)
 	{
-		itemName = [_userData.favoriteProjects objectAtIndex:i];
-		
 		// If the item is active, it will not show on the favorites
 		if (![self isActive:itemName])
 		{
@@ -157,15 +150,12 @@
 	
 	_allProjectsMenu = [[NSMenu alloc] init];
 	
-	NSUInteger l, i;
 	NSArray *projectNames = [_projectManager getProjectNames];
 	NSString *itemName;
 	NSMenuItem *menuItem;
 	
-	l = projectNames.count;
-	for (i = 0; i < l; i++)
+	for (itemName in projectNames)
 	{
-		itemName = [projectNames objectAtIndex:i];
 		menuItem = [[NSMenuItem alloc] initWithTitle:itemName action:@selector(menuItemClicked:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:itemName];
 		[menuItem setEnabled:YES];

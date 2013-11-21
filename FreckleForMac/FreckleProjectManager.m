@@ -221,10 +221,8 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 	
 	FreckleProjectData *project;
 	
-	NSUInteger l = _projects.count;
-	for (NSUInteger i = 0; i < l; i++)
+	for (project in _projects)
 	{
-		project = [_projects objectAtIndex:i];
 		if (project.isActive)
 		{
 			// The current project is always first.
@@ -245,12 +243,11 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 
 - (FreckleProjectData *)getProjectByName:(NSString *)name
 {
-	NSUInteger l = _projects.count;
-	for (NSUInteger i = 0; i < l; i++)
+	for (FreckleProjectData *project in _projects)
 	{
-		if ([[[_projects objectAtIndex:i] name] isEqualToString:name])
+		if ([project.name isEqualToString:name])
 		{
-			return [_projects objectAtIndex:i];
+			return project;
 		}
 	}
 	
@@ -262,10 +259,9 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 {
 	NSMutableArray *projects = [[NSMutableArray alloc] init];
 	
-	NSUInteger l = names.count;
-	for (NSUInteger i = 0; i < l; i++)
+	for (NSString *name in names)
 	{
-		[projects addObject:[[FreckleProjectData alloc] initWithName:[names objectAtIndex:i]]];
+		[projects addObject:[[FreckleProjectData alloc] initWithName:name]];
 	}
 	
 	return projects;
