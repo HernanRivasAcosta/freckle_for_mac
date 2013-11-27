@@ -10,7 +10,10 @@
 #import "FreckleUserData.h"
 #import "FreckleAPIManager.h"
 #import "FreckleProjectManager.h"
+#import "FreckleConfigurationManager.h"
 #import "FreckleMenuletHandler.h"
+#import "FreckleInputTracker.h"
+
 
 @interface FreckleAppDelegate : NSObject <NSApplicationDelegate>
 
@@ -20,6 +23,8 @@
 @property FreckleAPIManager *apiManager;
 @property FreckleProjectManager *projectManager;
 
+@property FreckleConfigurationManager *configurationManager;
 @property FreckleMenuletHandler *menuletHandler;
+@property FreckleInputTracker *inputTracker;
 
 @end

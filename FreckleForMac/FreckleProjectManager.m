@@ -14,7 +14,7 @@
 
 @interface FreckleProjectData()
 
-@property NSUInteger minutesBeforeThisSession;
+@property NSInteger minutesBeforeThisSession;
 @property NSDate *currentSessionStart;
 
 @end
@@ -59,15 +59,15 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 - (NSUInteger)secondsWorkedOnProject
 {
 	NSTimeInterval currentWorkedTime = -[_currentSessionStart timeIntervalSinceNow];
-	
-	return _minutesBeforeThisSession * 60 + currentWorkedTime;
+	NSInteger secs = _minutesBeforeThisSession * 60 + currentWorkedTime;
+	return secs > 0 ? secs : 0;
 }
 
 - (NSUInteger)minutesWorkedOnProject
 {
 	NSTimeInterval currentWorkedTime = -[_currentSessionStart timeIntervalSinceNow];
-	
-	return _minutesBeforeThisSession + ceil(currentWorkedTime / 60);
+	NSInteger mins = _minutesBeforeThisSession + ceil(currentWorkedTime / 60);
+	return mins > 0 ?  mins : 0;
 }
 
 - (void)startedWorking
@@ -99,9 +99,15 @@ static NSString *const LAST_START_KEY_PREFFIX = @"lastStartOf";
 
 - (void)deleteWork
 {
-	// This is called when the project is submitted, clear all the data
 	_minutesBeforeThisSession = 0;
 	_currentSessionStart = nil;
+	// Save the change
+	[self saveToUserDefaults];
+}
+
+- (void)removeTrackedTime:(NSUInteger)minutes
+{
+	_minutesBeforeThisSession -= minutes;
 	// Save the change
 	[self saveToUserDefaults];
 }

@@ -10,8 +10,9 @@
 #import "FreckleUserData.h"
 #import "FreckleProjectManager.h"
 #import "FreckleSubmitProjectWindowController.h"
+#import "FreckleInputTracker.h"
 
-@interface FreckleMenuletHandler : NSObject <NSMenuDelegate, FreckleSubmitProjectWindowControllerDelegate>
+@interface FreckleMenuletHandler : NSObject <NSMenuDelegate, FreckleSubmitProjectWindowControllerDelegate, FreckleInputTrackerDelegate>
 
 - (id)initWithUserData:(FreckleUserData *)userData apiManager:(FreckleAPIManager *)apiManager andProjectManager:(FreckleProjectManager *)projectManager;
 

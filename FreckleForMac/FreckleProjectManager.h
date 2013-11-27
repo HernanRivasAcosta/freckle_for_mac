@@ -33,6 +33,8 @@
 
 - (void)deleteWork;
 
+- (void)removeTrackedTime:(NSUInteger)minutes;
+
 @end
 
 ///////////////////////////////////////////////////////////

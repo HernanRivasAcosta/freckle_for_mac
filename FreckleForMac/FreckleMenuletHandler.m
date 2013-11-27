@@ -20,6 +20,8 @@
 
 @property FreckleProjectData *currentProject;
 
+@property NSAlert *alert;
+
 @end
 
 @implementation FreckleMenuletHandler
@@ -296,5 +298,23 @@
 	// Refresh the menu
 	[self setMenuBarIconSubmenu];
 }
+
+#pragma mark FreckleInputTrackerDelegate
+- (void)userWasInactiveFor:(NSUInteger)minutes
+{
+	// If we have a current project, show a window to the user, offering to remove the idle time
+	if (_currentProject != nil && _alert == nil)
+	{
+		_alert = [NSAlert alertWithMessageText:@"Inactivity detected" defaultButton:@"Ok" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"You have been inactive for the last %lu minutes, do you want to remove that time from %@?", (unsigned long)minutes, _currentProject.name];
+		[_alert setAlertStyle:NSInformationalAlertStyle];
+		if ([_alert runModal] == NSAlertDefaultReturn)
+		{
+			[_currentProject removeTrackedTime:minutes];
+		}
+		_alert = nil;
+		
+	}
+}
+
 
 @end

@@ -8,9 +8,15 @@
 
 #import "FreckleAppDelegate.h"
 
+@interface FreckleAppDelegate()
+
+@property id eventHandler;
+
+@end
+
 @implementation FreckleAppDelegate
 
-@synthesize userData, apiManager, projectManager, menuletHandler;
+@synthesize userData, apiManager, projectManager, configurationManager, menuletHandler, inputTracker;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -25,13 +31,20 @@
 	[projectManager loadProjectsWithSelector:@selector(onProjectsLoaded) andTarget:self];
 }
 
-#import "FreckleSubmitProjectWindowController.h"
-
 #pragma mark Utils
 - (void)onProjectsLoaded
 {
+	configurationManager = [[FreckleConfigurationManager alloc] init];
+	
 	NSLog(@"creating menulet");
 	menuletHandler = [[FreckleMenuletHandler alloc] initWithUserData:userData apiManager:apiManager andProjectManager:projectManager];
+
+	inputTracker = [[FreckleInputTracker alloc] initWithDelegate:menuletHandler andConfig:configurationManager];
+	
+	_eventHandler = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask | NSLeftMouseUpMask | NSRightMouseDownMask | NSRightMouseUpMask | NSMouseMovedMask | NSLeftMouseDraggedMask | NSRightMouseDraggedMask | NSMouseEnteredMask | NSMouseExitedMask | NSKeyDownMask | NSKeyUpMask | NSFlagsChangedMask | NSAppKitDefinedMask | NSSystemDefinedMask | NSApplicationDefinedMask | NSPeriodicMask | NSCursorUpdateMask | NSScrollWheelMask | NSTabletPointMask | NSTabletProximityMask | NSOtherMouseDownMask | NSOtherMouseUpMask | NSOtherMouseDraggedMask | NSEventMaskGesture | NSEventMaskMagnify | NSEventMaskSwipe | NSEventMaskRotate | NSEventMaskBeginGesture | NSEventMaskEndGesture handler:^(NSEvent *evt) {
+		[inputTracker onInput];
+	}];
 }
+
 
 @end
