@@ -13,10 +13,11 @@ Usage
 * FreckleForMac mantains a list of the last 5 projects you used.
 * You can remove a project from this list by using Cmd + Shift + Click.
 * In an active project, that same combination only clears the time you are currently tracking, it does not remove the project from favorites.
+* FreckleForMac detects your periods of inactivity and after 5 minutes or more, asks you wether you wish to unlog that time. You can now get lunch without even worrying about pausing and resuming your project!
 
 
 Future work
 ===========
 
-* User inactivity detection in case you go get lunch and forget to stop tracking.
 * Configuration window.
+* Improved graphics for alerts and notifications.
