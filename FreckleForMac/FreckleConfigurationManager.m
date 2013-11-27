@@ -11,10 +11,11 @@
 @implementation FreckleConfigurationManager
 
 #pragma mark Public properties
-@synthesize maximumInactivityTime;
+@synthesize maximumInactivityTime, allowNotifications;
 
 #pragma mark Constants
 static NSString *const INACTIVE_TIME_KEY = @"maxInactiveTime";
+static NSString *const ALLOW_NOTIFICATIONS_KEY = @"allowNotificationsTime";
 
 - (FreckleConfigurationManager *)init
 {
@@ -50,6 +51,16 @@ static NSString *const INACTIVE_TIME_KEY = @"maxInactiveTime";
 		// Use the default value (5 minutes)
 		maximumInactivityTime = 5;
 	}
+	
+	if ([def objectForKey:ALLOW_NOTIFICATIONS_KEY] != nil)
+	{
+		allowNotifications = [def boolForKey:ALLOW_NOTIFICATIONS_KEY];
+	}
+	else
+	{
+		// Default is true
+		allowNotifications = YES;
+	}
 }
 
 - (void)saveToDefaults
@@ -57,6 +68,7 @@ static NSString *const INACTIVE_TIME_KEY = @"maxInactiveTime";
 	NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
 	
 	[def setInteger:maximumInactivityTime forKey:INACTIVE_TIME_KEY];
+	[def setBool:allowNotifications forKey:ALLOW_NOTIFICATIONS_KEY];
 }
 
 @end

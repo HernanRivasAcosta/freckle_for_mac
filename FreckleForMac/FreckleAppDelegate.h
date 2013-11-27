@@ -15,15 +15,16 @@
 #import "FreckleInputTracker.h"
 
 
-@interface FreckleAppDelegate : NSObject <NSApplicationDelegate>
+@interface FreckleAppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+
+@property FreckleConfigurationManager *configurationManager;
 
 @property FreckleUserData *userData;
 @property FreckleAPIManager *apiManager;
 @property FreckleProjectManager *projectManager;
 
-@property FreckleConfigurationManager *configurationManager;
 @property FreckleMenuletHandler *menuletHandler;
 @property FreckleInputTracker *inputTracker;
 

@@ -11,6 +11,7 @@
 @interface FreckleConfigurationManager : NSObject
 
 @property (nonatomic, setter=maximumInactivityTime:) NSUInteger maximumInactivityTime;
+@property (nonatomic) BOOL allowNotifications;
 
 - (FreckleConfigurationManager *)init;
 

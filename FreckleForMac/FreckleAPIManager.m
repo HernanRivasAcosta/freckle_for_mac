@@ -11,18 +11,20 @@
 @interface FreckleAPIManager()
 
 @property FreckleUserData *userData;
+@property FreckleConfigurationManager *config;
 
 @end
 
 @implementation FreckleAPIManager
 
-- (id)initWithUserData:(FreckleUserData *)userData
+- (id)initWithUserData:(FreckleUserData *)userData andConfiguration:(FreckleConfigurationManager *)config
 {
 	self = [super init];
 	
 	if (self != nil)
 	{
 		_userData = userData;
+		_config = config;
 	}
 	
 	return self;
@@ -105,6 +107,17 @@
 		 if([(NSHTTPURLResponse *)response statusCode] == 201)
 		 {
 			 NSLog(@"Successfully logged time on %@", project);
+			 
+			 if (_config.allowNotifications)
+			 {
+				 // Create a notification
+				 NSUserNotification *notification = [[NSUserNotification alloc] init];
+				 notification.title = @"Project submitted";
+				 notification.informativeText = [NSString stringWithFormat:@"Time has been successfully logged on %@", project];
+				 notification.soundName = NSUserNotificationDefaultSoundName;
+				 
+				 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+			 }
 		 }
 		 else
 		 {

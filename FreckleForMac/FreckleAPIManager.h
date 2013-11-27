@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "FreckleUserData.h"
 #import "FreckleTimeParser.h"
+#import "FreckleConfigurationManager.h"
 
 @interface FreckleAPIManager : NSObject
 
-- (id)initWithUserData:(FreckleUserData *)userData;
+- (id)initWithUserData:(FreckleUserData *)userData andConfiguration:(FreckleConfigurationManager *)config;
 
 - (NSArray *)getProjectList;
 - (void)log:(NSUInteger)minutes onProject:(NSString *)projectName withComments:(NSString *)comments;
