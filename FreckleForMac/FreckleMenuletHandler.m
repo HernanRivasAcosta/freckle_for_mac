@@ -188,12 +188,16 @@
 	// When pressing command
 	if (([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) != 0)
 	{
+		// If shift is pressed
 		if (([[NSApp currentEvent] modifierFlags] & NSShiftKeyMask) != 0)
 		{
 			if ([project isActive])
 			{
 				// If the project is active, delete it
 				[project deleteWork];
+				
+				// Only one project can be active at any time so this is safe
+				_currentProject = nil;
 			}
 			else
 			{
@@ -201,7 +205,6 @@
 				[_userData removeFromFavorites:[project name]];
 			}
 			[self setMenuBarIconSubmenu];
-			
 		}
 		// Otherwise, submit the project
 		else
