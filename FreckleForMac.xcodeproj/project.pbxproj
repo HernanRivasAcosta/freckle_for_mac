@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2E4AC2186CAB7700561117 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC2E4AC1186CAB7700561117 /* Images.xcassets */; };
 		AC3FAA8D1839894C00E7CC1F /* KeyboardEnabledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3FAA8C1839894C00E7CC1F /* KeyboardEnabledTextField.m */; };
 		AC95C2001827638D00857657 /* FreckleProjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC95C1FF1827638D00857657 /* FreckleProjectManager.m */; };
 		ACC64C8D182EAB600018D674 /* FreckleLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC64C8B182EAB600018D674 /* FreckleLoginWindowController.m */; };
@@ -19,7 +20,6 @@
 		ACCA554D1826FE2E0098946F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCA554C1826FE2E0098946F /* main.m */; };
 		ACCA55541826FE2E0098946F /* FreckleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCA55531826FE2E0098946F /* FreckleAppDelegate.m */; };
 		ACCA55571826FE2E0098946F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCA55551826FE2E0098946F /* MainMenu.xib */; };
-		ACCA55591826FE2E0098946F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACCA55581826FE2E0098946F /* Images.xcassets */; };
 		ACCA55601826FE2E0098946F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA555F1826FE2E0098946F /* XCTest.framework */; };
 		ACCA55611826FE2E0098946F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA55401826FE2E0098946F /* Cocoa.framework */; };
 		ACCA55691826FE2E0098946F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACCA55671826FE2E0098946F /* InfoPlist.strings */; };
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC2E4AC1186CAB7700561117 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AC3FAA8B1839894C00E7CC1F /* KeyboardEnabledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardEnabledTextField.h; sourceTree = "<group>"; };
 		AC3FAA8C1839894C00E7CC1F /* KeyboardEnabledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardEnabledTextField.m; sourceTree = "<group>"; usesTabs = 1; };
 		AC95C1FE1827638D00857657 /* FreckleProjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreckleProjectManager.h; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		ACCA55521826FE2E0098946F /* FreckleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreckleAppDelegate.h; sourceTree = "<group>"; };
 		ACCA55531826FE2E0098946F /* FreckleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreckleAppDelegate.m; sourceTree = "<group>"; usesTabs = 1; };
 		ACCA55561826FE2E0098946F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		ACCA55581826FE2E0098946F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ACCA555E1826FE2E0098946F /* FreckleForMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreckleForMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACCA555F1826FE2E0098946F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		ACCA55661826FE2E0098946F /* FreckleForMacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FreckleForMacTests-Info.plist"; sourceTree = "<group>"; };
@@ -195,7 +195,6 @@
 				ACCA55751826FEA80098946F /* xibs */,
 				ACE28A02183D6B74008052A3 /* UI */,
 				ACCA55471826FE2E0098946F /* Supporting Files */,
-				ACCA55581826FE2E0098946F /* Images.xcassets */,
 			);
 			path = FreckleForMac;
 			sourceTree = "<group>";
@@ -207,6 +206,7 @@
 				ACCA55491826FE2E0098946F /* InfoPlist.strings */,
 				ACCA554C1826FE2E0098946F /* main.m */,
 				ACCA554E1826FE2E0098946F /* FreckleForMac-Prefix.pch */,
+				AC2E4AC1186CAB7700561117 /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,11 +344,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2E4AC2186CAB7700561117 /* Images.xcassets in Resources */,
 				ACC64C9318301D9D0018D674 /* FreckleSubmitProjectWindowController.xib in Resources */,
 				ACE28A09183D6B8C008052A3 /* Status.png in Resources */,
 				ACE28A08183D6B8C008052A3 /* StatusHighlighted@2x.png in Resources */,
 				ACCA554B1826FE2E0098946F /* InfoPlist.strings in Resources */,
-				ACCA55591826FE2E0098946F /* Images.xcassets in Resources */,
 				ACE28A0A183D6B8C008052A3 /* Status@2x.png in Resources */,
 				ACE28A07183D6B8C008052A3 /* StatusHighlighted.png in Resources */,
 				ACC64C8E182EAB600018D674 /* FreckleLoginWindowController.xib in Resources */,
