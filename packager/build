@@ -1,0 +1,57 @@
+# Create a tmp folder that will hold the data to be placed in the dmg
+rm -rf tmp
+mkdir tmp
+# Clean previous dmgs
+rm *.dmg
+
+# Create the background of the dmg
+mkdir tmp/.background
+convert -density 1024 -background none -resize 500x400 -extent 600x400 -gravity center source.svg tmp/.background/DMGBackground.png
+
+# Add the .app
+cp -r ../Build/Products/Release/FreckleForMac.app tmp/FreckleForMac.app
+
+# Add an alias to Applications
+#./make_alias /Applications/ tmp/.
+
+# Create a dmg with the contents of the folder
+hdiutil create temp.dmg -megabytes 100 -volname "FreckleForMacInstall" -fs HFS+ -format UDRW -scrub -srcfolder "tmp/"
+
+chflags nouchg .
+
+device=$(hdiutil attach -readwrite -noverify -noautoopen "temp.dmg" | egrep '^/dev/' | sed 1q | awk '{print $1}')
+
+# Format the visual style of the dmg
+echo '
+   tell application "Finder"
+     tell disk "'FreckleForMacInstall'"
+           open
+           set current view of container window to icon view
+           set toolbar visible of container window to false
+           set statusbar visible of container window to false
+           set the bounds of container window to {0, 0, 600, 400}
+           set theViewOptions to the icon view options of container window
+           set arrangement of theViewOptions to not arranged
+           set icon size of theViewOptions to 72
+           set background picture of theViewOptions to file ".background:'DMGBackground.png'"
+           make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
+           set position of item "'FreckleForMac.app'" of container window to {180, 300}
+           set position of item "Applications" of container window to {420, 300}
+           update without registering applications
+           delay 5
+           eject
+     end tell
+   end tell
+' | osascript
+
+#chmod -Rf go-w /Volumes/"FreckleForMacInstall"
+sync
+sync
+hdiutil detach ${device}
+
+# Encript it (make it read-only)
+hdiutil convert temp.dmg -format UDCO -o FreckleForMac.dmg
+
+# Cleanup
+rm temp.dmg
+rm -rf tmp
