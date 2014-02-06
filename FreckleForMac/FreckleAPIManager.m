@@ -84,12 +84,12 @@
 
 - (void)log:(NSUInteger)minutes onProject:(NSString *)project withComments:(NSString *)comments
 {
-	NSString *postString = @"{\"entry\":{\"minutes\":\"%@\", \"date\":\"%@\", \"project-name\":\"%@\", \"description\":\"%@\", \"allow_hashtags\":\"true\"}}";
+	NSString *postString = @"{\"entry\":{\"minutes\":\"%@\", \"date\":\"%@\", \"project-name\":\"%@\", \"description\":\"%@\", \"allow_hashtags\":true}}";
 	
 	NSDate *currentDate = [NSDate date];
 	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:currentDate];
 	
-	NSString *date = [NSString stringWithFormat:@"%ld-%ld-%ld", (long)components.year, (long)components.month, (long)components.day];
+	NSString *date = [NSString stringWithFormat:@"%04ld-%02ld-%02ld", (long)components.year, (long)components.month, (long)components.day];
 	NSString *time = [FreckleTimeParser formatMinutes:minutes];
 	NSString *jsonToSend = [NSString stringWithFormat:postString, time, date, project, comments];
 	
@@ -100,9 +100,13 @@
 	[req setHTTPMethod:@"POST"];
 	[req setHTTPBody:[jsonToSend dataUsingEncoding:NSUTF8StringEncoding]];
 	
+	NSLog(@"Sending %@ to %@", jsonToSend, req.URL.absoluteString);
+	
 	[NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
 	 {
-		 NSLog(@"Received %ld with body %@", (long)[(NSHTTPURLResponse *)response statusCode], [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+		 NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+		 
+		 NSLog(@"Received %ld with body %@", (long)statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 		 
 		 if([(NSHTTPURLResponse *)response statusCode] == 201)
 		 {
@@ -125,14 +129,14 @@
 			 
 			 if (connectionError != nil)
 			 {
-				 msg = [NSString stringWithFormat:@"Unable to log time on %@, reason: %@", project, connectionError.localizedDescription];
+				 msg = [NSString stringWithFormat:msg, project, connectionError.localizedDescription];
 			 }
 			 else
 			 {
-				 msg = [NSString stringWithFormat:@"Unable to log time on %@, reason: %@", project, @"unknown"];
+				 msg = [NSString stringWithFormat:msg, project, @"unknown"];
 			 }
 			 
-			 NSAlert *alert = [NSAlert alertWithMessageText:msg defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:nil];
+			 NSAlert *alert = [NSAlert alertWithMessageText:msg defaultButton:@"Ok" alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
 			 [alert performSelectorOnMainThread:@selector(runModal) withObject:nil waitUntilDone:NO];
 		 }
 	 }];
