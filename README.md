@@ -14,6 +14,7 @@ Usage
 * You can remove a project from this list by using Cmd + Shift + Click.
 * In an active project, that same combination only clears the time you are currently tracking, it does not remove the project from favorites.
 * FreckleForMac detects your periods of inactivity and after 5 minutes or more, asks you wether you wish to unlog that time. You can now get lunch without even worrying about pausing and resuming your project!
+* To create a pretty dmg with drag and drop to the Applications folder, call ./packager/build from the root of the project.
 
 
 Future work

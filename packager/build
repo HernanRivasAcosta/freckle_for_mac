@@ -11,9 +11,6 @@ convert -density 1024 -background none -resize 500x400 -extent 600x400 -gravity 
 # Add the .app
 cp -r ../Build/Products/Release/FreckleForMac.app tmp/FreckleForMac.app
 
-# Add an alias to Applications
-#./make_alias /Applications/ tmp/.
-
 # Create a dmg with the contents of the folder
 hdiutil create temp.dmg -megabytes 100 -volname "FreckleForMacInstall" -fs HFS+ -format UDRW -scrub -srcfolder "tmp/"
 
